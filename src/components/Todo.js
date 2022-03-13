@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 
 const Todo = () => {
   const [todos, getTodos] = useState([]);
-  const baseURL = 'http://localhost:3001/todo'
+  const baseURL = 'http://localhost:3000/todo'
 
   const fetchTodos = () => {
     axios.get(baseURL)
