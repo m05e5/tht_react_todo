@@ -83,8 +83,9 @@ const Todo = () => {
             <div key={element.id} className="todo">
               <label className="todo_check" htmlFor={element.id}>
                 <div>
-                  <input className="todo_check" onClick={() => checkTodo(element.id)} type="checkbox" id={element.id}/>
+                  <input className="todo_check" defaultChecked={element.completed === true ? true : false} onClick={() => checkTodo(element.id)} type="checkbox" id={element.id}/>
                   <span className="checkmark" />
+                  {/* {element.completed === true ? checked : null} */}
                   <b 
                     className={`todo_name ${element.completed ? 'completed' : null}`}
                   >
@@ -115,7 +116,8 @@ const Todo = () => {
         <div className="clear_done_div">
           <div className='count'>
             <b>
-              1
+              {todos.filter(todo => todo.completed ===true).length}
+              {' '}
               /
               {' '}
               {todos.length}
