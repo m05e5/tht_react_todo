@@ -1,6 +1,19 @@
 {
   "todo": [
-    { "id": 1, "name": "HTML", "completed": false },
-    { "id": 2, "name": "CSS", "completed": false }
-  ] 
+    {
+      "name": "HTML",
+      "completed": true,
+      "id": 6
+    },
+    {
+      "name": "CSS",
+      "completed": false,
+      "id": 7
+    },
+    {
+      "name": "JS",
+      "completed": false,
+      "id": 8
+    }
+  ]
 }
