@@ -1,14 +1,3 @@
 {
-  "todo": [
-    {
-      "name": "HTML",
-      "completed": false,
-      "id": 1
-    },
-    {
-      "name": "CSS",
-      "completed": false,
-      "id": 2
-    }
-  ]
+  "todo": []
 }

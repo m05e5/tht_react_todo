@@ -10,26 +10,31 @@ const Todo = () => {
     .then((response) => {
       const data = response.data
       getTodos(data)
-    }).then(()=>{
-      console.log(todos);
     })
-  } 
+  }
+
+  const check_filled = () => {
+    const todoInput = document.getElementById('todo_input')
+    const add_todo_btn = document.getElementById('add_todo')
+    if(todoInput.value !== '') {
+      add_todo_btn.classList.add('bg_shadow')
+    } else {
+      add_todo_btn.classList.remove('bg_shadow')
+    }
+  }
+  
 
   const submitTodo = () => {
     const todoInput = document.getElementById('todo_input')
     if(todoInput.value !== '') {
-      console.log(todoInput.value);
         axios.post(baseURL, {
           name: todoInput.value,
           completed: false
-        }).then((response) => {
-          console.log(response);
         }).then (() => {
           fetchTodos();
           todoInput.value = '';
+          document.getElementById('add_todo').classList.remove('bg_shadow')
         })
-    } else {
-      console.log('baka');
     }
   }
 
@@ -52,7 +57,6 @@ const Todo = () => {
 
   const checkTodo = (todoId) => {
     const todoCheck = document.getElementById(todoId)
-    console.log(todoCheck.checked)
     if(todoCheck.checked === true) {
       axios.patch(`${baseURL}/${todoId}`, {
         completed: true,
@@ -76,7 +80,6 @@ const Todo = () => {
 
   const displayTodo = () => {
     if(todos.length !== 0) {
-      console.log('yes')
       return (<>
         {
           todos.map((element) => (
@@ -100,8 +103,6 @@ const Todo = () => {
           ))
         }
       </>)
-    } else {
-      console.log(todos.length)
     }
   }
   
@@ -109,8 +110,8 @@ const Todo = () => {
   return (
     <div className="todo_div">
       <div className="todo_header">
-          <input type="text" placeholder='Task name:' id="todo_input" className=' box_in' />
-          <button type="button" className='box_in' onClick={submitTodo}><b>ADD TODO</b></button>
+          <input type="text" placeholder='Task name:' onChange={check_filled} id="todo_input" className=' box_in' />
+          <button type="button" className='box_in' id='add_todo' onClick={submitTodo}><b>ADD TODO</b></button>
       </div>
       <div className="todo_body box_in">
         <div className="clear_done_div">
