@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 
 const Todo = () => {
   const [todos, getTodos] = useState([]);
-  const baseURL = 'http://localhost:4000/todo'
+  const baseURL = 'https://tht-todo-server.herokuapp.com/todo'
 
   const fetchTodos = () => {
     axios.get(baseURL)
